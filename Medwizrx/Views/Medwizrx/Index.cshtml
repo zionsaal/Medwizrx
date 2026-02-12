@@ -1,0 +1,37 @@
+﻿@model Medwizrx.Models.FirstAloneCharVm
+
+@{
+    ViewData["Title"] = "First Unique Character";
+}
+
+<h2>First Unique Character</h2>
+
+<form asp-action="Index" method="post">
+    <div>
+        <label>Enter text:</label><br />
+        <input asp-for="Input" style="width: 400px;" />
+    </div>
+
+    <br />
+
+    <button type="submit">Find</button>
+</form>
+
+@if (!string.IsNullOrEmpty(Model?.Input))
+{
+    <hr />
+@*     <div>
+        <b>Input:</b> @Model.Input
+    </div> *@
+    <div>
+        <b>Result:</b>
+        @if (string.IsNullOrEmpty(Model.Result))
+        {
+            <span>(no unique character found)</span>
+        }
+        else
+        {
+            <span>@Model.Result</span>
+        }
+    </div>
+}
